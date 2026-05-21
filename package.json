@@ -1,0 +1,29 @@
+{
+  "name": "tasks-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "concurrently \"tsc -w\" \"nodemon ./dist/index.js\"",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M-Taha-Amin/Tasks-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/M-Taha-Amin/Tasks-CLI/issues"
+  },
+  "homepage": "https://github.com/M-Taha-Amin/Tasks-CLI#readme",
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14",
+    "typescript": "^6.0.3"
+  }
+}
