@@ -16,5 +16,10 @@ export const readTasks = (): Array<Task> => {
 };
 
 export const writeTasks = (updatedData: Array<Task>) => {
-  fs.writeFileSync(TASKS_PATH, JSON.stringify(updatedData));
+  try {
+    fs.writeFileSync(TASKS_PATH, JSON.stringify(updatedData));
+  } catch (error) {
+    console.log('File not found');
+    process.exit(1);
+  }
 };
