@@ -18,7 +18,3 @@ Run the command "npm install" to install all dependencies of the project.
 ## Step 4
 
 Run the command "npm run build" to generate the dist folder.
-
-## Step 5
-
-Inside the dist folder generated in step 4, create a new file and name it "tasks.json". This will serve as the database for the cli.
