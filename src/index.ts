@@ -55,6 +55,18 @@ const markTaskAs = (taskID: number, status: Task['status']) => {
   writeTasks(tasks);
 };
 
+const listTasks = (filterStatus?: Task['status']) => {
+  let tasks = readTasks();
+  if (filterStatus) {
+    tasks = tasks.filter(task => task.status === filterStatus);
+  }
+  for (let task of tasks) {
+    console.log(
+      `${task.id}.${task.description} (${task.status}, last updated at ${task.updatedAt})`,
+    );
+  }
+};
+
 const checkArgs = (required: number) => {
   if (args.length < required) {
     console.log('Error: Not enough arguments given for', action?.toUpperCase());
@@ -94,7 +106,8 @@ switch (action) {
     break;
 
   case 'list':
-    
+    if (args.length === 1) listTasks(args[0] as Task['status']);
+    else listTasks();
     break;
 
   default:
