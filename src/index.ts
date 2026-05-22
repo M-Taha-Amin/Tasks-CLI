@@ -1,5 +1,5 @@
 import { argv } from 'process';
-import { readTasks, writeTasks } from './utils.js';
+import { readTasks, showHelp, writeTasks } from './utils.js';
 import type { Task } from './types.js';
 
 const command = argv.slice(2);
@@ -110,6 +110,11 @@ switch (action) {
     else listTasks();
     break;
 
+  case '-h':
+    showHelp();
+    break;
+
   default:
+    console.log('Invalid option, use -h to see available operations');
     break;
 }
