@@ -33,6 +33,28 @@ const updateTask = (taskID: number, newDescription: string) => {
   writeTasks(tasks);
 };
 
+const deleteTask = (taskID: number) => {
+  let tasks = readTasks();
+  const filteredTasks = tasks.filter(task => task.id !== taskID);
+  if (filteredTasks.length === tasks.length) {
+    console.log('Error: Task to Delete not found');
+    process.exit(1);
+  }
+  writeTasks(filteredTasks);
+};
+
+const markTaskAs = (taskID: number, status: Task['status']) => {
+  let tasks = readTasks();
+  let index = tasks.findIndex(task => task.id === taskID);
+  if (index === -1) {
+    console.log('Error: Task to mark not found');
+    process.exit(1);
+  }
+  tasks[index]!.status = status;
+  tasks[index]!.updatedAt = new Date();
+  writeTasks(tasks);
+};
+
 const checkArgs = (required: number) => {
   if (args.length < required) {
     console.log('Error: Not enough arguments given for', action?.toUpperCase());
@@ -54,15 +76,25 @@ switch (action) {
     break;
 
   case 'delete':
+    checkArgs(1);
+    deleteTask(Number(args[0]));
+    console.log(`Task deleted successfully (ID: ${args[0]})`);
     break;
 
   case 'mark-in-progress':
+    checkArgs(1);
+    markTaskAs(Number(args[0]), 'in-progress');
+    console.log(`Task marked in-progress successfully (ID: ${args[0]})`);
     break;
 
   case 'mark-done':
+    checkArgs(1);
+    markTaskAs(Number(args[0]), 'done');
+    console.log(`Task marked done successfully (ID: ${args[0]})`);
     break;
 
   case 'list':
+    
     break;
 
   default:
