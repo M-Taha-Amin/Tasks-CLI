@@ -18,3 +18,8 @@ Run the command "npm install" to install all dependencies of the project.
 ## Step 4
 
 Run the command "npm run build" to generate the dist folder.
+
+## Step 5
+
+cd in the dist folder and run the cli there. Use command "node ./index.js -h" to
+see all possible options. Good luck!
